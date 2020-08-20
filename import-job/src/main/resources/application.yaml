@@ -1,0 +1,17 @@
+spring:
+  batch:
+    job:
+      jobName: job
+      stepName: step1
+      chunkSize: 5
+      flatfilereader:
+        name: itemReader
+        resource: file:/batch-input/input.csv
+        delimited: true
+        names: report
+        strict: true
+      rabbitamqpitemwriter:
+        name: itemWriter
+  cloud:
+    task:
+      closecontextEnabled: true
